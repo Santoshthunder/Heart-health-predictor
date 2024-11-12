@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Health Predictor</title>
+    <!-- Inline CSS for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e09d9d;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Page title */
+        h2 {
+            font-size: 2rem;
+            color: #2e5e5e;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Form container styling */
+        form {
+            background-color: #f4c2c2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: left;
+        }
+
+        /* Label styling */
+        label {
+            font-size: 1rem;
+            color: #4a6b6b;
+            display: block;
+            margin-top: 15px;
+        }
+
+        /* Input fields styling */
+        input[type="number"],
+        input[type="text"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #c4d4d4;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Checkbox styling */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Submit button styling */
+        button[type="submit"] {
+            background-color: #4a9a9a;
+            color: #ffffff;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3e8686;
+        }
+
+        /* Basic styling for checkbox labels */
+        label.inline {
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Heart Health Prediction Form</h2>
+    <form method="post" action="{% url 'predict' %}">
+        {% csrf_token %}
+        <label>Age:</label>
+        <input type="number" name="age" required>
+
+        <label>Resting BP:</label>
+        <input type="number" name="resting_bp" required>
+
+        <label>Cholesterol:</label>
+        <input type="number" name="cholesterol" required>
+
+        <label>Fasting BS (0 or 1):</label>
+        <input type="number" name="fasting_bs" required>
+
+        <label>Max HR:</label>
+        <input type="number" name="max_hr" required>
+
+        <label>Oldpeak:</label>
+        <input type="text" name="oldpeak" required>
+
+        <label class="inline">Sex (Male):</label>
+        <input type="checkbox" name="sex_m"><br>
+
+        <label class="inline">Chest Pain Type - ATA:</label>
+        <input type="checkbox" name="chestpain_ata"><br>
+
+        <label class="inline">Chest Pain Type - NAP:</label>
+        <input type="checkbox" name="chestpain_nap"><br>
+
+        <label class="inline">Chest Pain Type - TA:</label>
+        <input type="checkbox" name="chestpain_ta"><br>
+
+        <label class="inline">Resting ECG - Normal:</label>
+        <input type="checkbox" name="resting_ecg_normal"><br>
+
+        <label class="inline">Resting ECG - ST:</label>
+        <input type="checkbox" name="resting_ecg_st"><br>
+
+        <label class="inline">Exercise Angina (Yes):</label>
+        <input type="checkbox" name="exercise_angina_y"><br>
+
+        <label class="inline">ST Slope - Flat:</label>
+        <input type="checkbox" name="st_slope_flat"><br>
+
+        <label class="inline">ST Slope - Up:</label>
+        <input type="checkbox" name="st_slope_up"><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
+
